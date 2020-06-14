@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <title>个人相册</title>
+ <meta charset="utf-8">
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen"> 
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans:400italic' rel='stylesheet' type='text/css'>  
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="js/tms-0.3.js" type="text/javascript"></script>
+    <script src="js/tms_presets.js" type="text/javascript"></script>
+    <script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+   
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .box {
+            position: relative;
+            height: 500px;
+            width: 500px;
+            margin: 10px auto;
+            transform-style: preserve-3d;
+            perspective: 2000px;
+        }
+
+        .di {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 200px;
+            width: 200px;
+            transform: translate(-50%, -50%) rotatex(90deg);
+            transform-style: preserve-3d;
+        }
+
+        .z {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            /*transform: rotatez(1deg);*/
+        }
+
+        p {
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 25px;
+            height: 200px;
+            width: 150px;
+            border: 2px solid #fd7068;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-size: 10px;
+            line-height: 200px;
+            text-align: center;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
+            box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
+           
+        }
+    </style>
+</head>
+
+<body>
+	<div class="main">
+        	<h1>
+            	<a href="index.html">刘 东 林</a>
+                <em>尝试用鼠标拖动</em>
+            </h1>
+        </div>
+        <audio controls style=" width: 200px;
+            margin: auto;">
+		  <source src="audio/Sold Out .mp3" type="audio/ogg ">
+		您的浏览器不支持 audio 元素。
+		</audio>
+		
+        <div class="menu-row">
+        	<div class="main">
+				
+            	<div class="container_12">
+                	<div class="wrapper">
+                    	<div class="grid_12">
+                        	<nav>
+                                <ul class="menu">
+                                    <li><a class="active" href="index.html">基本简介</a></li>
+                                    <li><a href="University.html">大学经历</a></li>
+                                    <li><a href="Social.html">社会实践经历</a></li>
+                                    <li><a href="contacts.html">联系我</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+        <p>尝试用鼠标拖动</p>
+<div class="box">
+    <div class="di">
+        <div class="z">
+            <p><img src="images/photo1.jpg" alt="" /></p>
+            <p><img src="images/photo2.jpg" alt="" /></p>
+            <p><img src="images/photo3.jpg" alt="" /></p>
+            <p><img src="images/photo4.jpg" alt="" /></p>
+            <p><img src="images/photo5.jpg" alt="" /></p>
+            <p><img src="images/photo6.jpg" alt="" /></p>
+            <p><img src="images/photo7.jpg" alt="" /></p>
+            <p><img src="images/photo8.jpg" alt="" /></p>
+            <p><img src="images/photo9.jpg" alt="" /></p>
+            <p><img src="images/photo10.jpg" alt="" /></p>
+            <p><img src="images/photo11.jpg" alt="" /></p>
+            <p><img src="images/photo12.jpg" alt="" /></p>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    window.onload = function () {
+        setPs();
+        move();
+        drop();
+    }
+    function setPs() {
+        var ps = document.getElementsByTagName('p');
+        for (var i = 0; i < ps.length; i++) {
+            ps[i].style.transform = 'rotatex(-90deg) rotatey(' + i * 30 + 'deg) translatez(400px)'
+        }
+    }
+    function move() {
+        var zBox = document.querySelector('.z');
+        var xBox = document.querySelector('.di');
+        var speedTimer = null;
+        var speedX = 0;
+        var speedY = 0;
+        var xDegNow = 90;
+        var zDegNow = 0;
+        var xDegDistance = 0;
+        var zDegDistance = 0;
+        var isMove = false;
+        window.onmousedown = function (e) {
+            xBox.style.transition = '';
+            zBox.style.transition = '';
+            var xstart = e.clientX;
+            var speedX_start = xstart;
+            var ystart = e.clientY;
+            var speedY_start = ystart;
+            var tstart = new Date().getTime();
+            var tnow = tstart;
+            speedTimer = setInterval(function () {
+                tnow = new Date().getTime();
+            },10)
+            window.onmousemove = function (e) {
+                isMove = true;
+                var xnow = e.clientX;
+                var ynow = e.clientY;
+                var xDistance = xnow - xstart;
+                var yDistance = ynow - ystart;
+                if (tnow - tstart >= 10) {
+                    speedX = (xnow - speedX_start) / (tnow - tstart);
+                    speedY = (ynow - speedY_start) / (tnow - tstart);
+                    tstart = tnow;
+                    speedX_start = xnow;
+                    speedY_start = ynow;
+                }
+                zDegDistance = zDegNow - (xDistance / 10);
+                zBox.style.transform = 'rotatez(' + zDegDistance + 'deg)';
+                xDegDistance = xDegNow - (yDistance / 10);
+                xDegDistance = xDegDistance > 179 ? 179 : xDegDistance < 1 ? 1 : xDegDistance;
+                xBox.style.transform = 'translate(-50%,-50%) rotatex(' + xDegDistance + 'deg)';
+            };
+        };
+        window.onmouseup = function (e) {
+            window.onmousemove = null;
+            if (isMove) {
+                xBox.style.transition = 'all 0.5s ease-out';
+                zBox.style.transition = 'all 0.5s ease-out';
+                zDegDistance = zDegDistance - (speedX * 10);
+                zBox.style.transform = 'rotatez(' + zDegDistance + 'deg)';
+                xDegDistance = xDegDistance - (speedY * 10);
+                xDegDistance = xDegDistance > 179 ? 179 : xDegDistance < 1 ? 1 : xDegDistance;
+                xBox.style.transform = 'translate(-50%,-50%) rotatex(' + xDegDistance + 'deg)';
+                xDegNow = xDegDistance;
+                zDegNow = zDegDistance;
+                isMove = false;
+                speedX = 0;
+                speedY = 0;
+                xDegDistance = 0;
+                zDegDistance = 0;
+            }
+        };
+
+    }
+    //鼠标拖拽文件
+    function drop() {
+        window.ondragover = function (e) {
+            e.preventDefault();
+        }
+        window.ondrop = function (e) {
+            e.preventDefault();
+        }
+        var ps = document.getElementsByTagName('p');
+        for (var i = 0; i < ps.length; i++) {
+            ps[i].index = i;
+            ps[i].ondrop = function (e) {
+                var w = new FileReader();
+                w.index = this.index;
+                w.readAsDataURL(e.dataTransfer.files[0]);
+                w.onload = function () {
+                    ps[this.index].style.backgroundImage = 'url(' + w.result + ')';
+                    ps[this.index].innerHTML = '';
+                }
+            }
+        }
+    }
+</script>
+<!--==============================footer=================================-->
+    <footer>
+        <div class="main">
+        	<div class="container_12">
+            	<div class="wrapper">
+                	<div class="grid_3 suffix_3">
+                    	<ul class="list-services">
+                         <img src="images/er.jpg" alt="" />
+                        </ul>
+                    </div>
+                    <div class="grid_5">
+                    	<span class="footer-text color-1">
+                    		<span>班 级：2019软件工程专升本1班 </span>
+                        	<span>姓 名：刘东林 </span>
+                        	<span>学 号：20194132009 </span>
+                        	<span>项 目：个人主页 </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

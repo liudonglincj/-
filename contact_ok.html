@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>发送成功</title>  
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen"> 
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans:400italic' rel='stylesheet' type='text/css'>  
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    <link href='http//fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+	
+	<style>
+	div.img {
+	    margin: 5px;
+	    border: 1px solid #f20069;
+	    float: left;
+	    width: 180px;
+	}
+	
+	div.img:hover {
+	    border: 1px solid #777;
+	}
+	
+	div.img img {
+	    width: 100%;
+	    height: auto;
+	}
+	
+	div.desc {
+	    padding: 15px;
+	    text-align: center;
+	}
+	</style>
+	<script type="text/javascript">  
+	var time = 8; //时间,秒  
+	function Redirect() {  
+	    window.location = "index.html";  
+	}  
+	var i = 0;  
+	function dis() {  
+	    document.all.s.innerHTML = "还剩" + (time - i) + "秒";  
+	    i++;  
+	}  
+	timer = setInterval('dis()', 1000); //显示时间  
+	timer = setTimeout('Redirect()', time * 1000); //跳转  
+	</script>  
+</head>
+<body>
+<!--==============================header=================================-->
+    <header>
+    	<div class="main">
+        	<h1>
+            	<a href="index.html">刘东林</a>
+                <em>刘东林的大学经历</em>
+            </h1>
+        </div>
+        <div class="menu-row">
+        	<div class="main">
+            	<div class="container_12">
+                	<div class="wrapper">
+                    	<div class="grid_12">
+                        	<nav>
+                                <ul class="menu">
+                                    <li><a class="active" href="index.html">基本简介</a></li>
+                                    <li><a  href="University.html">大学经历</a></li>
+                                    <li><a href="Social.html">社会实践经历</a></li>
+                                    <li><a href="contacts.html">联系我</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+     <div class="main">
+     </br>
+    <p class="color-1" style="font-size: 30px;">发送成功，正在跳转反回主页：</p>
+    <span id="s"  class="color-1" style="font-size: 30px;"></span> 
+   </br></br>
+     	<p class="color-1" style="font-size: 30px;">您可以采取一下方式联系我：</p>
+		<div class="responsive">
+		  <div class="img">
+		    <a target="_blank" href="images/qq.jpg">
+		      <img src="images/qq.jpg" alt="图片文本描述" width="300" height="200">
+		    </a>
+		    <div class="desc">QQ</div>
+		  </div>
+		</div>
+		<div class="responsive">
+		  <div class="img">
+		    <a target="_blank" href="images/微信.png">
+		      <img src="images/微信.png" alt="图片文本描述" width="300" height="200">
+		    </a>
+		    <div class="desc">微信二维码</div>
+		  </div>
+		</div>
+		 
+		<div class="responsive">
+		  <div class="img">
+		    <a target="_blank" href="images/支付宝.png">
+		      <img src="images/支付宝.png" alt="图片文本描述" width="300" height="200">
+		    </a>
+		    <div class="desc">添加支付宝</div>
+		  </div>
+		</div>
+		<div class="responsive">
+		  <div class="img">
+		    <a target="_blank" href="images/qq.jpg">
+		      <img src="images/qq.jpg" alt="图片文本描述" width="300" height="200">
+		    </a>
+		    <div class="desc">QQ</div>
+		  </div>
+		</div>
+		</div>
+	<!--==============================footer=================================-->
+    <footer>
+        <div class="main">
+        	<div class="container_12">
+            	<div class="wrapper">
+                	<div class="grid_3 suffix_3">
+                    	<ul class="list-services">
+                         <img src="images/er.jpg" alt="" />
+                        </ul>
+                    </div>
+                    <div class="grid_5">
+                    	<span class="footer-text color-1">
+                    		<span>班 级：2019软件工程专升本1班 </span>
+                        	<span>姓 名：刘东林 </span>
+                        	<span>学 号：20194132009 </span>
+                        	<span>项 目：个人主页 </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
